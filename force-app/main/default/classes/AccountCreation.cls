@@ -8,7 +8,6 @@ Public class AccountCreation {
 System.debug(a.name);
        
        
-    //  return a;
    }
     Public String Name;
 }
