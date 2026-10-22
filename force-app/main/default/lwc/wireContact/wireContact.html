@@ -1,0 +1,52 @@
+<template>
+
+    <lightning-card title="Contacts with refresh Apex">
+
+        <div class="slds-p-around_medium">
+
+            <lightning-button
+                label="Refresh Contacts"
+                onclick={handleRefresh}>
+            </lightning-button>
+
+
+            <template if:true={contacts}>
+
+                <template
+                    for:each={contacts}
+                    for:item="contact">
+
+                    <div key={contact.Id}
+                         class="slds-m-top_small">
+
+                        <p>
+                            <strong>
+                                {contact.FirstName}
+                                {contact.LastName}
+                            </strong>
+                        </p>
+
+                        <p>{contact.Email}</p>
+
+                        <p>{contact.Phone}</p>
+
+                    </div>
+
+                </template>
+
+            </template>
+
+
+            <template if:true={error}>
+
+                <p>
+                    Error loading Contacts
+                </p>
+
+            </template>
+
+        </div>
+
+    </lightning-card>
+
+</template>

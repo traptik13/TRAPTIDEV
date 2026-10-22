@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Recent Opportunities" icon-name="standard:opportunity">
+        <div class="slds-m-around_medium">
+            <!-- Display the table if data is returned -->
+            <template if:true={opportunities.data}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={opportunities.data}
+                    columns={columns}
+                    hide-checkbox-column="true">
+                </lightning-datatable>
+            </template>
+
+
+            <!-- Display an error message if the wire fails -->
+            <template if:true={opportunities.error}>
+                <p class="slds-text-color_error">Error loading opportunities.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

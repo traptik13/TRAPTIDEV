@@ -1,0 +1,40 @@
+<template>
+    <lightning-card title="Toast Notification">
+
+        <div class="slds-p-around_medium">
+
+            <!-- Title -->
+            <lightning-input
+                label="Title"
+                value={titleText}
+                onchange={titleChange}>
+            </lightning-input>
+
+            <!-- Message -->
+            <lightning-input
+                label="Message"
+                value={messageText}
+                onchange={messageChange}>
+            </lightning-input>
+
+            <!-- Variant -->
+            <lightning-combobox
+                label="Variant"
+                value={variant}
+                options={variantOptions}
+                onchange={variantChange}>
+            </lightning-combobox>
+
+            <!-- Button -->
+            <div class="slds-m-top_medium">
+                <lightning-button
+                    label="Show Notification"
+                    variant="brand"
+                    onclick={showNotification}>
+                </lightning-button>
+            </div>
+
+        </div>
+
+    </lightning-card>
+</template>

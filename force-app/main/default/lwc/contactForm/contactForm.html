@@ -1,0 +1,46 @@
+<template>
+    <lightning-card title="New Contact">
+        <div class="slds-p-around_medium">
+
+            <!-- Account Lookup -->
+            <lightning-record-picker
+                label="Account"
+                object-api-name="Account"
+                value={accountId}
+                onchange={handleAccountChange}
+                placeholder="Search Account">
+            </lightning-record-picker>
+
+            <lightning-input
+                label="First Name"
+                value={firstName}
+                data-field="FirstName"
+                onchange={handleChange}>
+            </lightning-input>
+
+            <lightning-input
+                label="Last Name"
+                value={lastName}
+                data-field="LastName"
+                onchange={handleChange}
+                required>
+            </lightning-input>
+
+            <lightning-input
+                type="email"
+                label="Email"
+                value={email}
+                onchange={handleEmailChange}
+                required>
+            </lightning-input>
+
+            <lightning-button
+                label="Save"
+                variant="brand"
+                class="slds-m-top_medium"
+                onclick={handleSave}>
+            </lightning-button>
+
+        </div>
+    </lightning-card>
+</template>

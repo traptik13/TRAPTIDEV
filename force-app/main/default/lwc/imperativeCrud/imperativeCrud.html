@@ -1,0 +1,101 @@
+<template>
+
+    <lightning-card title="Imperative Apex CRUD">
+
+        <div class="slds-p-around_medium">
+
+            <!-- FETCH -->
+
+            <h2>Fetch Accounts</h2>
+
+            <lightning-button
+                label="Fetch 10 Accounts"
+                onclick={handleFetch}>
+            </lightning-button>
+
+
+            <template if:true={accounts}>
+
+                <template
+                    for:each={accounts}
+                    for:item="account">
+
+                    <p key={account.Id}>
+
+                        {account.Name}
+                        -
+                        {account.Phone}
+                        -
+                        {account.Industry}
+
+                    </p>
+
+                </template>
+
+            </template>
+
+
+            <!-- INSERT -->
+
+            <h2 class="slds-m-top_medium">
+                Insert Account
+            </h2>
+
+            <lightning-input
+                label="Account Name"
+                onchange={handleNameChange}>
+            </lightning-input>
+
+            <lightning-button
+                label="Create Account"
+                onclick={handleInsert}
+                class="slds-m-top_small">
+            </lightning-button>
+
+
+            <!-- UPDATE -->
+
+            <h2 class="slds-m-top_medium">
+                Update Account
+            </h2>
+
+            <lightning-input
+                label="Account Id"
+                onchange={handleIdChange}>
+            </lightning-input>
+
+            <lightning-input
+                label="New Account Name"
+                onchange={handleNewNameChange}>
+            </lightning-input>
+
+            <lightning-button
+                label="Update Account"
+                onclick={handleUpdate}
+                class="slds-m-top_small">
+            </lightning-button>
+
+
+            <!-- DELETE -->
+
+            <h2 class="slds-m-top_medium">
+                Delete Account
+            </h2>
+
+            <lightning-input
+                label="Account Id"
+                onchange={handleIdChange}>
+            </lightning-input>
+
+            <lightning-button
+                label="Delete Account"
+                variant="destructive"
+                onclick={handleDelete}
+                class="slds-m-top_small">
+            </lightning-button>
+
+        </div>
+
+    </lightning-card>
+
+</template>

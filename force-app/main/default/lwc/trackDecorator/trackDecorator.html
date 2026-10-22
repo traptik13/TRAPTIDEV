@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Track Decorator Example" icon-name="standard:user">
+        <div class="slds-p-around_medium">
+            <lightning-input 
+                label="Enter Name" 
+                value={user.name} 
+                onkeyup={handleNameChange}>
+            </lightning-input>
+
+            <p class="slds-m-top_medium">
+                The name in the object is: <strong>{user.name}</strong>
+            </p>
+        </div>
+    </lightning-card>
+</template>

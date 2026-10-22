@@ -1,0 +1,17 @@
+<template>
+    <template if:true={hasError}>
+        <lightning-card title="Error Occurred">
+            <div class="slds-p-around_medium">
+                Error Occurred: {errorMessage}
+            </div>
+        </lightning-card>
+    </template>
+
+    <template if:false={hasError}>
+        <lightning-card title="No Error">
+            <div class="slds-p-around_medium">
+                Component loaded successfully
+            </div>
+        </lightning-card>
+    </template>
+</template>

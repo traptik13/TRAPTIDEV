@@ -1,0 +1,137 @@
+<template>
+  <section class="user-card">
+
+        <div class="page-header">
+           <h2>User Information</h2>
+
+            <lightning-button
+                label="New"
+                variant="brand-outline"
+                onclick={handleNew}>
+            </lightning-button>
+
+        </div>
+
+        <div class="table-wrapper">
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Active</th>
+                        <th>Email</th>
+                        <th class="action-heading"></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                     <template
+                        for:each={users}
+                        for:item="user">
+                        <tr key={user.Id}>
+
+                            <td>{user.Name}</td>
+                            <td>{user.Username}</td>
+                            <td>{user.IsActive}</td>
+                            <td>{user.Email}</td>
+                            <td class="action-cell">
+
+                                <lightning-button
+                                    label="Edit"
+                                    variant="brand-outline"
+                                    data-id={user.Id}
+                                    onclick={handleEdit}>
+                                </lightning-button>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <template if:true={showModal}>
+        <section
+            class="modal-backdrop"
+            role="dialog"
+            tabindex="-1"
+            aria-modal="true">
+
+            <div class="modal">
+            
+                <div class="modal-header">
+                    <h2>
+                        {modalTitle}
+                    </h2>
+                    <button
+                        class="close-button"
+                        title="Close"
+                        onclick={handleCancel}>
+
+                        ×
+                    </button>
+                </div>
+
+                <!-- Form -->
+                <div class="modal-body">
+
+                    <lightning-record-edit-form
+                        object-api-name={userObject}
+                        record-id={selectedUserId}
+                        onsuccess={handleSuccess}
+                        onerror={handleError}>
+
+                        <div class="form-grid">
+
+                            <!-- Profile -->
+                            <lightning-input-field
+                                field-name={profileField}>
+                            </lightning-input-field>
+
+                            <!-- Last Name -->
+                            <lightning-input-field
+                                field-name={lastNameField}>
+                            </lightning-input-field>
+
+                            <!-- Username -->
+                            <lightning-input-field
+                                field-name={usernameField}>
+                            </lightning-input-field>
+
+                            <!-- Email -->
+                            <lightning-input-field
+                                field-name={emailField}>
+                            </lightning-input-field>
+
+                            <!-- Active -->
+                        
+                                <lightning-input-field
+                                    field-name={activeField}>
+                                </lightning-input-field>
+
+                        </div>
+            
+                        <div class="modal-footer">
+
+                            <lightning-button
+                                label="Cancel"
+                                onclick={handleCancel}>
+                            </lightning-button>
+
+                            <lightning-button
+                                variant="brand"
+                                type="submit"
+                                label="Save">
+                            </lightning-button>
+
+                        </div>
+                    </lightning-record-edit-form>
+                </div>
+
+            </div>
+
+        </section>
+
+    </template>
+
+</template>

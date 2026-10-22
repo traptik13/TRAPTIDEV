@@ -1,0 +1,122 @@
+<template>
+      <lightning-card>
+        <div class="slds-text-align_center slds-text-heading_medium slds-p-around_small">
+            Create Record: OpportunityProductAmountCalculation
+        </div>
+        <div class="slds-p-around_medium">
+               
+                <!--<div class="slds-text-align_center slds-p-around_small">
+                    <lightning-record-picker
+                        label="Product"
+                        placeholder="--Please Select Product--"
+                        object-api-name="Product2"
+                        onchange={handleProductChange}>
+                    </lightning-record-picker>
+                </div>-->
+                <div class="slds-grid slds-grid_column slds-grid_align-center slds-p-around_small">
+                     <div style="width: 100%; max-width: 400px;"> 
+                        <lightning-record-picker 
+                            label="Product" 
+                            placeholder="--Please Select Product--" 
+                            object-api-name="Product2" 
+                            onchange={handleProductChange}>
+                        </lightning-record-picker>
+                    </div>
+                </div>
+
+
+                <div class="slds-grid slds-grid_align-end slds-m-bottom_medium">
+                    <lightning-button
+                        label="New"
+                        variant="brand"
+                        onclick={handleNew}>
+                    </lightning-button>
+                </div>
+
+            <template if:true={opacRecords}>
+                <div class="slds-m-top_medium">
+                    <lightning-datatable
+                        key-field="Id"
+                        data={opacRecords}
+                        columns={columns}
+                        hide-checkbox-column
+                        onrowaction={handleRowAction}>
+                    </lightning-datatable>
+                </div>
+            </template>
+
+        </div>
+
+    </lightning-card>
+
+    <template if:true={showModal}>
+        <section
+            role="dialog"
+            tabindex="-1"
+            aria-modal="true"
+            class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">
+                        {modalTitle}
+                    </h2>
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning-record-edit-form
+                        object-api-name="Opac__c"
+                        record-id={recordId}
+                        onsuccess={handleSuccess}>
+                        <lightning-messages></lightning-messages>
+
+                        <lightning-input-field
+                            field-name="Name"
+                            required>
+                        </lightning-input-field>
+
+                        <lightning-input-field
+                            field-name="Product__c"
+                            value={selectedProductId}>
+                        </lightning-input-field>
+
+                        <lightning-input-field
+                            field-name="Min__c">
+                        </lightning-input-field>
+
+                        <lightning-input-field
+                            field-name="Max__c">
+                        </lightning-input-field>
+
+                        <lightning-input-field
+                            field-name="Price__c">
+                        </lightning-input-field>
+
+                        <div class="slds-m-top_medium slds-text-align_right">
+
+                            <lightning-button
+                                label="Cancel"
+                                onclick={handleCancel}
+                                class="slds-m-right_small">
+                            </lightning-button>
+
+                            <lightning-button
+                                type="submit"
+                                label="Save"
+                                variant="brand">
+                            </lightning-button>
+
+                        </div>
+
+                    </lightning-record-edit-form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <div class="slds-backdrop slds-backdrop_open"></div>
+
+    </template>
+
+</template>
